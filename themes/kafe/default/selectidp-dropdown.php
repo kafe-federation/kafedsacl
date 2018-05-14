@@ -4,6 +4,7 @@
 $KAFE_URI = SimpleSAML_Module::getModuleURL('kafedsacl');
 $KAFE_URI = str_replace('http://', 'https://', $KAFE_URI);
 
+
 if (!array_key_exists('header', $this->data)) {
     $this->data['header'] = 'selectidp';
 }
@@ -115,14 +116,14 @@ $this->data['idplist'] = $idplist;
 
 <div id="layout-header">
     <div id="header">
-        <h1 id="logo"><a href="#">LOGIN <span>to COREEN CoWork PMS</span></a></h1>
+        <h1 id="logo"><a href="#">LOGIN <span>to <?php echo $state['SPMetadata']['description']['en'] ?></span></a></h1>
 
         <a href="#why" class="why btn-why">Why am I here?</a>
         <div id="why">
             <div class="group">
                 <h2>Why am I here?</h2>
                 <div class="contents">
-                    You tried to access <strong>COREEN CoWork PMS</strong>. This service brings you to your home organization.
+                    You tried to access <strong> <?php echo $state['SPMetadata']['description']['en'] ?></strong>. This service brings you to your home organization.
                     <div class="paragraph">
                         <p>Your organisation could be:</p>
                         <ul>
@@ -147,7 +148,7 @@ $this->data['idplist'] = $idplist;
                         <p>What if I don’t see my organization in the list?</p>
                         <ul>
                             <li>Your organization may not be the member of the Korean Access Federation.</li>
-                            <li>Your organization is not eligible to use COREEN CoWork PMS.</li>
+                            <li>Your organization is not eligible to use  <?php echo $state['SPMetadata']['description']['en'] ?>.</li>
                         </ul>
                         For more information, please contact us at coreen@kreonet.net 
                     </div>
@@ -194,6 +195,8 @@ return strcmp(
 });
 unset($GLOBALS['__t']);
 
+//logo: $idpentry['UIInfo']['Logo'];
+
 foreach ($this->data['idplist'] as $idpentry) {
     $IdPName = htmlspecialchars($this->t('idpname_'.$idpentry['entityid']));
     $IdPKey = htmlspecialchars($idpentry['entityid']);
@@ -206,7 +209,7 @@ foreach ($this->data['idplist'] as $idpentry) {
                     <li>
                         <a href="#" data-idpkey="<?php echo $IdPKey;?>" data-idpname="<?php echo $IdPName;?>">
                             <p class="subject">
-                                <img src="<?php echo $KAFE_URI.$logo;?>" alt="COREEN set.ID by KAFE">
+                                <img src="<?php echo htmlspecialchars($idpentry['UIInfo']['Logo'][0]['url']);?>" alt="<?php echo $IdPName ?>">
                                 <?php echo $IdPName;?>
                             </p>
                         </a>
@@ -229,7 +232,10 @@ return strcmp(
 });
 unset($GLOBALS['__t']);
 
+//logo: $idpentry['UIInfo']['Logo'];
+
 foreach ($this->data['idplist'] as $idpentry) {
+
     $IdPName = htmlspecialchars($this->t('idpname_'.$idpentry['entityid']));
     $IdPKey = htmlspecialchars($idpentry['entityid']);
 
@@ -239,12 +245,12 @@ foreach ($this->data['idplist'] as $idpentry) {
                     <li>
                         <a href="#" data-idpkey="<?php echo $IdPKey;?>" data-idpname="<?php echo $IdPName;?>">
                             <p class="subject">
-                                <img src="<?php echo $KAFE_URI.$logo;?>" alt="COREEN set.ID by KAFE">
+                                <img src="<?php echo htmlspecialchars($idpentry['UIInfo']['Logo'][0]['url']);?>" alt="<?php echo $IdPName?>">
                                 <?php echo $IdPName;?>
                             </p>
                         </a>
                     </li>
-<?php } ?>
+<?php } ?> 
                 </ul>
             </div>
         </div>

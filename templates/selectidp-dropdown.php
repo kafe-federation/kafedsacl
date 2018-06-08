@@ -54,14 +54,14 @@ $this->data['idplist'] = $idplist;
 
 <div id="layout-header">
     <div id="header">
-        <h1 id="logo"><a href="#">LOGIN <span>to <?php echo $state['SPMetadata']['description']['en'] ?></span></a></h1>
+        <h1 id="logo"><a href="#">LOGIN <span>to <?php echo $state['SPMetadata']['name']['en'] ?></span></a></h1>
 
         <a href="#why" class="why btn-why">Why am I here?</a>
         <div id="why">
             <div class="group">
                 <h2>Why am I here?</h2>
                 <div class="contents">
-                    You tried to access <strong> <?php echo $state['SPMetadata']['description']['en'] ?></strong>. This service brings you to your home organization.
+                    You tried to access <strong> <?php echo $state['SPMetadata']['name']['en'] ?></strong>. This service brings you to your home organization.
                     <div class="paragraph">
                         <p>Your organisation could be:</p>
                         <ul>

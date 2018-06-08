@@ -13,3 +13,13 @@ set configuration
 ...
 ```
 
+## Usage
+
+change `YOUR_SSP/templates/selectidp-dropdown.php` file.
+
+```php
+$globalConfig = SimpleSAML_Configuration::getInstance();
+$t = new SimpleSAML_XHTML_Template($globalConfig, 'kafedsacl:selectidp-dropdown.php');
+$t->data = $this->data;
+$t->show();
+```
